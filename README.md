@@ -22,3 +22,4 @@ Puppet modules:
 Credits
 -------
  + The base of the  Oracle module is from Codescape (https://github.com/codescape/vagrant-oracle-xe).
+   I just modified it to work on RedHat based systems, and added the support of swap file mounting.
