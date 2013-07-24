@@ -15,9 +15,12 @@ NoSQL:
 
 Dependencies
 ------------
-Puppet modules:
+You need either to install (puppet module tool), or download into the modules directory the following modules from puppet-forge:
+Utilities: 
  + puppetlabs/create_resources
  + puppetlabs/stdlib
+For databases: 
+ + puppetlabs/mysql 
 
 Credits
 -------
