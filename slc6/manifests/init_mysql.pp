@@ -19,7 +19,7 @@ class { 'mysql::server':
     'port'          => '3306',
   },
 }
-->
+
 mysql::db { 'testdb':
   user     => 'testUser',
   password => 'testPass',
