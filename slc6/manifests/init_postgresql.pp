@@ -23,7 +23,7 @@ class { 'postgresql::server':
     'postgres_password'         => 'testPass',
   },
 }
-
+->
 postgresql::database_user { 'testUser':
   password_hash => 'testPass',
 }
