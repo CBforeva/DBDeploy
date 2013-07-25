@@ -16,7 +16,7 @@ class { 'mongodb':
   enable_10gen => true,
   #port         => '27017',
   #dbpath       => '/var/lib/mongo',
-  #nojournal    => true,  #Disable write-ahead jorunaling.
+  #nojournal    => true,  #Disable write-ahead jorunaling. Durability is lost on that case!
   #cpu          => true,  #Enables periodic logging of CPU utilization and IO wait.
   #noauth       => true,  #Turn on/off security.
   #verbose      => true,  #Increased verbosity.
