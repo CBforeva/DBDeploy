@@ -8,6 +8,8 @@ Supporting the installation and configuration of the following databases:
 SQL:
 ----
  + Oracle 11g XE - You need to download the appropriate Oracle 11g XE RPM into modules/oracle/files/
+ + MySQL
+ + PostgreSQL
 
 NoSQL:
 ------
@@ -15,12 +17,10 @@ NoSQL:
 
 Dependencies
 ------------
-You need either to install (puppet module tool), or download into the modules directory the following modules from puppet-forge:
-Utilities: 
- + puppetlabs/create_resources
- + puppetlabs/stdlib
-For databases: 
- + puppetlabs/mysql 
+You need either to install (puppet module tool), or download into the modules directory the following modules from puppet-forge. Please note, that different modules may have additional dependencies too.
+The list: 
+ + puppetlabs/mysql
+ + puppetlabs/postgresql
 
 Credits
 -------
