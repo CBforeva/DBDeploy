@@ -14,6 +14,7 @@ SQL:
 NoSQL:
 ------
  + CouchDB
+ + Cassandra
 
 Dependencies
 ------------
