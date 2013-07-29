@@ -22,6 +22,7 @@ You need either to install (puppet module tool), or download into the modules di
 The list: 
  + puppetlabs/mysql
  + puppetlabs/postgresql
+ + smarchive/cassandra (patches are available under modules/cassandra)
 
 Credits
 -------
