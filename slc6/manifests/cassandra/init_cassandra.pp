@@ -35,13 +35,13 @@ file { '/var/lib/cassandra':
 ->
 package { 'opscenter-free':
   ensure => installed,
-  notify => Service['opscenterd'],
+  #notify => Exec['opscenter-agent-install'],
 }
 
-service { 'opscenter-agent':
-  ensure     => running,
-  enable     => true,
-  hasstatus  => true,
-  hasrestart => true,
-}
+#exec { 'opscenter-agent-install':
+#  ensure     => running,
+#  enable     => true,
+#  hasstatus  => true,
+#  hasrestart => true,
+#}
 
