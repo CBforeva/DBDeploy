@@ -7,3 +7,4 @@ node mongo_sharding_default {
   mongodb::mongod { 'mongod_Shard1': mongod_instance => "Shard1", mongod_port => ''}
 
 }
+
