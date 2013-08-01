@@ -1,5 +1,4 @@
-### This init.pp file installs RIAK.
-### The following Puppet Module is a dependency: haf/riak
+### This puppet manifest blindly commit ring changes.
 
 group { "puppet":
   ensure => "present",
@@ -12,12 +11,5 @@ file { '/etc/motd':
               Managed by Puppet to install and configure RIAK. \n",
 }
 
-include riak
-#class { 'riak': 
-#  cfg => {
-#    riak_core => {
-#      https => { "__string__${$::ipaddress}" => 8443 }
-#    }
-#  }
-#}
+# TODO: Commit ring changes.
 
