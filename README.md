@@ -8,6 +8,7 @@ Supporting the installation and configuration of the following databases:
 SQL:
 ----
  + Oracle 11g XE - You need to download the appropriate Oracle 11g XE RPM into modules/oracle/files/
+ + Oracle 11g SE
  + MySQL
  + PostgreSQL
 
@@ -23,6 +24,7 @@ The list:
  + puppetlabs/mysql
  + puppetlabs/postgresql
  + smarchive/cassandra (patches are available under modules/cassandra)
+ + Oracle: biemond/oradb Prerequisites: fiddyspence-sysctl and erwbgy-limits
 
 Credits
 -------
