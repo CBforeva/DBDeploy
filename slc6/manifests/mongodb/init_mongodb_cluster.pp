@@ -26,7 +26,7 @@ node 'mongo-node1.cern.ch',
      'mongo-node4.cern.ch' inherits mongo_sharding_defaults { }
 
 
-node 'mongo-confignode.cern.ch' {
+node 'mongo-config.cern.ch' {
   include mongodb
   mongodb::mongod { 'mongod_config':
     mongod_instance  => 'mongoconfig',
