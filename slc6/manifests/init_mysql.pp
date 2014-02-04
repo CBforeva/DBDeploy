@@ -19,7 +19,8 @@ file { '/etc/motd':
 # my.cnf -> [mysqld]
 class { 'mysql::server': 
   override_options => {
-    'mysqld' => { 'max_connections' => '100',
+    'mysqld' => { 'bind_address' => '0.0.0.0',
+                  'max_connections' => '100',
                   'max_allowed_packet' => '100M',
     }
   }
@@ -28,7 +29,7 @@ class { 'mysql::server':
 mysql::db { 'testdb':
   user     => 'testUser',
   password => 'testPass',
-  host     => 'localhost',
+  host     => '%',
   grant    => ['all'],
   require  => Class['::mysql::server'],
 }
@@ -45,5 +46,9 @@ database { 'testdb':
 ->
 database_grant { 'testdb@%/testUser':
   privileges => [all],
+}
+->
+service { 'iptables':
+  ensure => 'stopped',
 }
 

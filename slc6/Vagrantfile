@@ -77,14 +77,17 @@ Vagrant.configure("2") do |config|
                     puppet module install --force puppetlabs/apt;
                     puppet module install --force puppetlabs/concat;
                     puppet module install --force puppetlabs/postgresql;
-                    puppet module install --force puppetlabs/mysql"
+                    puppet module install --force puppetlabs/mysql;
+                   #puppet module install --force puppetlabs/mongodb;
+                    puppet module install --force dwerder/mongodb;
+                    puppet module install --force jonbrouse/couchdb"
   end
 
   config.vm.provision :puppet do |puppet|
     # puppet.options = "--verbose --debug"
     puppet.options = "--verbose --debug --trace"
     puppet.manifests_path = "manifests"
-    puppet.manifest_file  = "init_postgresql.pp"
+    puppet.manifest_file  = "init_mysql.pp"
     puppet.module_path = "modules"
     puppet.facter = { "vagrant" => "1" }
   end
