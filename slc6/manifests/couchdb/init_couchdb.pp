@@ -8,20 +8,9 @@ group { 'puppet':
 File { owner => 0, group => 0, mode => 0644, }
 
 file { '/etc/motd':
-  content => "Welcome to your Vagrant-built virtual machine!
+  content => "Welcome! This node is ready to be performance tested...!
               Managed by Puppet to install and configure CouchDB. \n",
 }
-
-# Create directories that will be needed.
-#file { '/usr/local/var':     ensure => directory, }
-#file { '/usr/local/var/lib': ensure => directory, require => File['/usr/local/var'], }
-#file { '/usr/local/var/lib/couchdb': 
-#  ensure  => directory,
-#  group   => 'couchdb',
-#  recurse => true,
-#  require => File['/usr/local/var/lib']
-#}
-
 
 # Create user and group for couchdb:
 group { 'couchdb': 
@@ -34,20 +23,19 @@ user { 'couchdb':
   shell   => '/bin/bash',
   home    => '/var/lib/couchdb',
   require => Group['couchdb'],
-#  require => File['/usr/local/var/lib/couchdb'], 
 }
 
+# CouchDB is available in the EPEL Repository. + Disable firewall.
 service { 'iptables':
   ensure  => stopped,
   require => User['couchdb'],
 }
-# CouchDB is available in the EPEL Repository. + Disable firewall.
 package { 'couchdb': 
   ensure  => installed, 
   notify  => Service['iptables'],
 }
 
-# Copy-paster custom configuration.
+# Copy-paste custom configuration.
 file { '/etc/couchdb/default.ini':
   source  => 'puppet:///modules/couchdb/test_config.ini',
   owner   => 'couchdb',
@@ -56,7 +44,6 @@ file { '/etc/couchdb/default.ini':
   notify  => Service['couchdb'],
   require => Package['couchdb'],
 }
-
 file { ['/usr/local/etc/couchdb', '/var/log/couchdb', '/var/lib/couchdb', '/var/run/couchdb']:
   ensure  => directory,
   recurse => true,
@@ -64,7 +51,7 @@ file { ['/usr/local/etc/couchdb', '/var/log/couchdb', '/var/lib/couchdb', '/var/
   group   => 'couchdb',
 }
 
-# Start the server and then relax.
+# Start the server.
 service { 'couchdb':
   ensure     => running,
   enable     => true,
