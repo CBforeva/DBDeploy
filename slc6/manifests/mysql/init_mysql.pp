@@ -1,6 +1,5 @@
 ### This init.pp file installs MySQL.
 ### The following Puppet Module is required: puppetlabs/mysql
-### Also it's dependencies: puppetlabs/stdlib
 
 group { "puppet":
   ensure => "present",
@@ -9,19 +8,22 @@ group { "puppet":
 File { owner => 0, group => 0, mode => 0644 }
 
 file { '/etc/motd':
-  content => "Welcome to your Vagrant-built virtual machine!
-              Managed by Puppet to install and configure a MySQL Server \n",
+  content => "Welcome! This node is ready to be performance tested...
+              Managed by Puppet to install and configure a MySQL Server. \n",
 }
-
-# Full default settings:
-#include '::mysql::server'
 
 # my.cnf -> [mysqld]
 class { 'mysql::server': 
   override_options => {
     'mysqld' => { 'bind_address' => '0.0.0.0',
-                  'max_connections' => '100',
-                  'max_allowed_packet' => '100M',
+                  'max_connections' => '250',
+                  'max_allowed_packet' => '200M',
+                  'innodb_buffer_pool_size' => '3G',
+                  #'innodb_buffer_pool_instances' => '16' <- only from MySQL 5.5
+                  'innodb_log_file_size' => '256M',
+                  'innodb_log_buffer_size' => '128M', #probably 64M is enough?
+                  'innodb_flush_log_at_trx_commit' => '1', # <- set to 2 for flush transactions to OS file cache. (lost full ACID.)
+                  'innodb_thread_concurrency' => '5', # <- 2 * NumOf(CPU) + NumOf(Disks)
     }
   }
 }
@@ -32,21 +34,7 @@ mysql::db { 'testdb':
   host     => '%',
   grant    => ['all'],
   require  => Class['::mysql::server'],
-}
-->
-database_user { 'testUser@%':
-  ensure        => present,
-  password_hash => mysql_password('testPass'),
-}
-->
-database { 'testdb':
-  ensure  => present,
-  charset => 'utf8',
-}
-->
-database_grant { 'testdb@%/testUser':
-  privileges => [all],
-}
+}}
 ->
 service { 'iptables':
   ensure => 'stopped',
