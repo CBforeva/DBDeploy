@@ -1,6 +1,5 @@
 ### This init.pp file installs PostgreSQL.
 ### The following Puppet Module is required: puppetlabs/postgresql
-### Also it's dependencies: puppetlabs/stdlib, firewall, apt and concat
 
 group { "puppet":
   ensure => "present",
@@ -9,8 +8,8 @@ group { "puppet":
 File { owner => 0, group => 0, mode => 0644 }
 
 file { '/etc/motd':
-  content => "Welcome to your Vagrant-built virtual machine!
-              Managed by Puppet to install and configure a PostgreSQL Server \n",
+  content => "Welcome! This node is ready to be performance tested...
+              Managed by Puppet to install and configure PostgreSQL Server \n",
 }
 
 class { 'postgresql::server':
@@ -26,5 +25,8 @@ postgresql::server::db { 'testdb':
   user     => 'testUser',
   password => 'testPass',
 }
-
+->
+service { 'iptables':
+  ensure => 'stopped',
+}
 
