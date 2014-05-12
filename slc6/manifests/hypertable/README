@@ -1,0 +1,8 @@
+The puppet manifests in this directory are implemented to
+install a Hypertable cluster.
+
+Proper sequence: 
+1.: init_hypertable.pp  // For installing the Hypertable package, set up directories, etc.
+2.: init_hypertable_data_volume.pp  // For the set up of storage element for Hypertable.
+3.: init_hypertable_service.pp  // For initializing, starting the Hypertable instances.
+
