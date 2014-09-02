@@ -3,10 +3,10 @@
 ### Required module for wget:   maestrodev-wget
 ### Required module for lines:  puppetlabs/stdlib
 
-$htNameVersion = "hypertable-0.9.7.17"
-$htVersion     = "0.9.7.17"
+$htNameVersion = "hypertable-0.9.8.0"
+$htVersion     = "0.9.8.0"
 $htArch        = "linux-x86_64"
-$rpmURL        = "http://cdn.hypertable.com/packages/0.9.7.17/hypertable-0.9.7.17-linux-x86_64.rpm"
+$rpmURL        = "http://cdn.hypertable.com/packages/0.9.8.0/hypertable-0.9.8.0-linux-x86_64.rpm"
 
 group { "puppet":
   ensure => "present",
