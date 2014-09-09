@@ -37,9 +37,12 @@ class { 'cassandra':
   heap_newsize        => '400M', # 100MB/CPU core
   additional_jvm_opts => ['-Xss256k'],
 
-  #thrift_framed_transport_size_in_mb => '100',
-  #thrift_max_message_length_in_mb    => '100',
-  #in_memory_compaction_limit_in_mb   => '100',
+  #auto_bootstrap = 'true', # this is missing from the template unfortunately.
+  start_native_transport => 'true', # Needed for the native client.
+
+  #thrift_framed_transport_size_in_mb => '100', # Check this if you are using it with Thrift.
+  #thrift_max_message_length_in_mb    => '100', # Check this if you are using it with Thrift.
+  #in_memory_compaction_limit_in_mb   => '100', # Check this if you are using it with Thrift.
 }
 ->
 service { 'iptables':
