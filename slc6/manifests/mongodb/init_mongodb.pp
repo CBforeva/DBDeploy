@@ -22,13 +22,17 @@ class { '::mongodb::server':
   bind_ip      => ['0.0.0.0'],
   port         => 27017,
   maxconns     => 250,
+  auth         => false,
 
   # Performance related:
-  journal      => true,  #Enable/Disable write-ahead jorunaling. (Durability is lost if false!)
-  noprealloc   => false, #Enable/Disable pre-allocation of data files. (If true, performance loss guaranteed.)
-  #slowms      => '500ms'  #Threshold for mongod to consider a query slow. (Default: 100 ms)
-  #nssize      => '16',  #Size of namespace files. (Default is 16.)
-  #smallfiles  => true,  # ??? Need to test...
+  journal      => true,   # Enable/Disable write-ahead jorunaling. (Durability is lost if false!)
+  noprealloc   => false,  # Enable/Disable pre-allocation of data files. (If true, performance loss guaranteed.)
+  #slowms      => '500ms' # Threshold for mongod to consider a query slow. (Default: 100 ms)
+  #nssize      => '16',   # Size of namespace files. (Default is 16.)
+  #smallfiles  => true,   # if you have a large number of databases that each holds a small quantity of data. 
+
+  # Sharding:
+  
 
   # Operational:
   objcheck     => true,  #Inspect client data. like: Inserted docs hold format, etc. (For driver developing mainly.)
@@ -44,3 +48,4 @@ mongodb::db { 'testdb':
 service { 'iptables':
   ensure => 'stopped',
 }
+
