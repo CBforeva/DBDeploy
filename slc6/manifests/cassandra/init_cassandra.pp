@@ -26,7 +26,9 @@ package { 'jna':
 ->
 class { 'cassandra':
   cluster_name   => 'TestCluster',
-  seeds          => ["${ipaddress}"],
+  seeds          => ['cassnode1.cern.ch', 'cassnode2.cern.ch'],
+  # For singlenode setup:
+  #seeds          => ["${ipaddress}"],
   
   rpc_address    => '0.0.0.0', 
   listen_address => "${ipaddress}",
