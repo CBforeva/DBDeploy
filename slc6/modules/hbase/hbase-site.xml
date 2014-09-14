@@ -1,0 +1,13 @@
+
+<configuration>
+  <property>
+    <name>hbase.rootdir</name>
+    <value>file:///bigdata/hbase</value>
+  </property>
+
+  <property>
+    <name>hbase.zookeeper.property.dataDir</name>
+    <value>/bigdata/zookeeper</value>
+  </property>
+</configuration>
+
