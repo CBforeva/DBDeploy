@@ -26,12 +26,6 @@ service iptables stop
 
 echo " "
 echo "######################################"
-echo "# WOOF -> Initialize VM:             #"
-echo "######################################"
-puppet apply ../manifests/init_vm.pp
-
-echo " "
-echo "######################################"
 echo "# WOOF -> Done                       #"
 echo "######################################"
 
