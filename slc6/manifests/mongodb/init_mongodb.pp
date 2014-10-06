@@ -1,6 +1,5 @@
 ### This init.pp file installs MongoDB.
 ### The following Puppet Module is a dependency: puppetlabs/mongodb
-### Also it's dependencies: puppetlabs/apt
 
 group { "puppet":
   ensure => "present",
@@ -31,21 +30,16 @@ class { '::mongodb::server':
   #nssize      => '16',   # Size of namespace files. (Default is 16.)
   #smallfiles  => true,   # if you have a large number of databases that each holds a small quantity of data. 
 
-  # Sharding:
-  
+  # Sharding: not supported from puppetlabs... Use site.pp instead.
 
   # Operational:
   objcheck     => true,  #Inspect client data. like: Inserted docs hold format, etc. (For driver developing mainly.)
   notablescan  => true,  #Turns off table scans. Scanning queries are disabled.
 }
-->
-mongodb::db { 'testdb':
-  user        => 'testUser',
-  password    => 'testPass',
-  tries       => 10,
-}
-->
-service { 'iptables':
-  ensure => 'stopped',
-}
+#->
+#mongodb::db { 'testdb':
+#  user        => 'testUser',
+#  password    => 'testPass',
+#  tries       => 10,
+#}
 
