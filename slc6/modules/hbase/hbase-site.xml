@@ -2,12 +2,12 @@
 <configuration>
   <property>
     <name>hbase.rootdir</name>
-    <value>file:///bigdata/hbase</value>
+    <value>file:///data_dir/hbase</value>
   </property>
 
   <property>
     <name>hbase.zookeeper.property.dataDir</name>
-    <value>/bigdata/zookeeper</value>
+    <value>/data_dir/zookeeper</value>
   </property>
 </configuration>
 

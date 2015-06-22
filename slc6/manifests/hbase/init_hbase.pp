@@ -1,4 +1,4 @@
-### This init.pp file installs HBase Standalone.
+### This init.pp file installs HBase in pseudo distributed mode.
 ### Required module for limits: erwbgy-limits
 ### Required module for wget:   maestrodev-wget
 ### Required module for lines:  puppetlabs/stdlib
