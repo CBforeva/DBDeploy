@@ -1,12 +1,11 @@
 ### This init.pp file installs CouchDB.
-### The following Puppet Module doesn't have any dependeny.
+### This manifest doesn't have any module dependeny.
 
 group { 'puppet':
   ensure => "present",
 }
 
 File { owner => 0, group => 0, mode => 0644, }
-
 file { '/etc/motd':
   content => "Welcome! This node is ready to be performance tested...!
               Managed by Puppet to install and configure CouchDB. \n",
@@ -36,7 +35,7 @@ package { 'couchdb':
 }
 
 # Copy-paste custom configuration.
-file { '/etc/couchdb/default.ini':
+file { '/etc/couchdb/local.ini':
   source  => 'puppet:///modules/couchdb/test_config.ini',
   owner   => 'couchdb',
   group   => 'couchdb',
