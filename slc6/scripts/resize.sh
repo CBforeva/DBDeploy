@@ -24,6 +24,7 @@ echo "# WOOF -> Tune for throughput/perf     #"
 echo "########################################"
 tuned-adm profile throughput-performance
 puppet apply /root/slc6/manifests/init_limits.pp
+#puppet apply /root/slc6/manifests/init_sysctl.pp
 swapoff --all
 
 echo " "
