@@ -17,11 +17,11 @@ class { 'mysql::server':
   override_options => {
     'mysqld' => { 'bind_address' => '0.0.0.0',
                   'max_connections' => '250',
-                  'max_allowed_packet' => '200M',
-                  'innodb_buffer_pool_size' => '3G',
+                  'max_allowed_packet' => '100M',
+                  'innodb_buffer_pool_size' => '512M', # Bigger -> More like an in-memory db.
                   #'innodb_buffer_pool_instances' => '16' <- only from MySQL 5.5
-                  'innodb_log_file_size' => '256M',
-                  'innodb_log_buffer_size' => '128M', #probably 64M is enough?
+                  'innodb_log_file_size' => '128M',
+                  'innodb_log_buffer_size' => '64M',
                   'innodb_flush_log_at_trx_commit' => '1', # <- set to 2 for flush transactions to OS file cache. (lost full ACID.)
                   'innodb_thread_concurrency' => '5', # <- 2 * NumOf(CPU) + NumOf(Disks)
     }
@@ -34,7 +34,7 @@ mysql::db { 'testdb':
   host     => '%',
   grant    => ['all'],
   require  => Class['::mysql::server'],
-}}
+}
 ->
 service { 'iptables':
   ensure => 'stopped',
