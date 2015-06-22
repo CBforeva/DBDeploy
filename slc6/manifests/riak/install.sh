@@ -16,7 +16,7 @@ echo "########################################"
 echo "# WOOF -> Apply init_riak.pp           #"
 echo "########################################"
 puppet apply init_riak.pp
-echo " ... Possible bug in RIAK puppet module. Starting riak NOT as a service... "
+echo " ... Possible bug in RIAK puppet module. Starting riak manually, NOT as a service... "
 
 echo " "
 echo "########################################"
