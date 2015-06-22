@@ -1,7 +1,5 @@
 ### This init.pp file installs RIAK.
 ### The following Puppet Module is a dependency: jbussdieker/riak
-### Also for limits: erwbgy-limits
-### and sysctl:      fiddyspence-sysctl
 
 group { "puppet":
   ensure => "present",
@@ -10,17 +8,10 @@ group { "puppet":
 File { owner => 0, group => 0, mode => 0644, }
 
 file { '/etc/motd':
-  content => "Welcome to your Vagrant-built virtual machine!
+  content => "Welcome! This node is ready to be performance tested...
               Managed by Puppet to install and configure RIAK. \n",
 }
 
-class { 'limits':
-     config => {
-                '*'       => { 'nofile'  => { soft => '4096'   , hard => '8192',   },},
-               },
-     use_hiera => false,
-}
-->
 package { 'basho-repo':
   ensure   => present,
   source   => "http://yum.basho.com/gpg/basho-release-6-1.noarch.rpm",
@@ -28,7 +19,7 @@ package { 'basho-repo':
 }
 ->
 class { 'riak':
-  node_name => 'riak@<host_name>',
+  node_name => "riak@${ipaddress}",
   pb_ip     => '0.0.0.0',
   pb_port   => 8087,
 
@@ -59,9 +50,4 @@ class { 'riak':
   # },
 
 }
-->
-service { 'iptables':
-  ensure => stopped,
-}
-
 
