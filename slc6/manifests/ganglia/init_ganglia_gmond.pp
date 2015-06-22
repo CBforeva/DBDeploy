@@ -9,7 +9,7 @@ $udp_send_channel = [
 ]
 $tcp_accept_channel = [
   { port => 8649 },
-]]
+]
 
 class { 'ganglia::gmond':
   cluster_name       => 'PerfTestCluster',

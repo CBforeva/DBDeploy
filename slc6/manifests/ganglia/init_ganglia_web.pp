@@ -1,13 +1,12 @@
 ### This puppet manifest installing the Ganglia Monitoring's web interface with gmetad.
-# On RedHat based distros ganglia web monitoring has some issues with SELinux. We'll disable it
-# before the installation. 
+# On RedHat based distros ganglia web monitoring has some issues with SELinux. We'll disable it before the installation. 
 # In order to use, you need the following puppet modules installed:
 # puppet module install jhoblitt/ganglia
 # puppet module install spiette/selinux
 
 $clusters = [
-  {  name     => 'PerfTestCluster', 
-     address  => ['barenode.cern.ch'], #, 'test2.example.org'],
+  {  name     => 'PerfTestCluster',
+     address  => ['barenode.cern.ch'],
   },
 ]
 
