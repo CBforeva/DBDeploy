@@ -1,0 +1,15 @@
+Modules needed:
+puppet module install biemond-oradb
+puppet module install fiddyspence-sysctl
+puppet module install erwbgy-limits
+
+These manifests handle the installation of Oracle databases.
+
+Proper sequence of applying manifests:
+1.: init_ora11g_kernel.pp
+2.: init_ora11g_prerequisites.pp
+3.: init_ora11g.pp
+4.: init_ora11g_testdb.pp
+5.: init_ora11g_listener.pp
+
+
