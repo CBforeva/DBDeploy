@@ -2,7 +2,7 @@
 
 $puppetmaster="${fqdn}"
 
-node mongo_sharding_default {
+node mongo_shard_default {
 
   # Install MongoDB
   class { 'mongodb':
@@ -37,7 +37,7 @@ node mongo_sharding_default {
 
 # This three nodes are shard members and run a mongoS
 
-node 'node1.cern.ch' inherits mongo_sharding_default { 
+node 'node1.cern.ch' inherits mongo_shard_default { 
   mongodb::mongod { 'mongod_config':
     mongod_instance  => 'shardproxy',
     mongod_port      => 27018,
@@ -50,5 +50,5 @@ node 'node1.cern.ch' inherits mongo_sharding_default {
 node 'node2.cern.ch', 
      'node3.cern.ch',
      'node4.cern.ch',
-     'node5.cern.ch' inherits mongo_sharding_default { }
+     'node5.cern.ch' inherits mongo_shard_default { }
 
