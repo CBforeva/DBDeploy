@@ -24,6 +24,10 @@ monitoring.sh:
  + 1.: Start a DSTAT process with 1030 sec timeout.
  + 2.: Start an IOSTAT process collecting sampler for 1030 seconds.
 
+mountVolume.sh:
+---------------
+Mounts attached volumes if needed.
+
 puppet:
 -------
 Contains agent and master specific scripts for starting catalog runs, accepting certificates, etc.
