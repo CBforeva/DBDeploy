@@ -12,4 +12,3 @@ Proper sequence of applying manifests:
 4.: init_ora11g_testdb.pp
 5.: init_ora11g_listener.pp
 
-
