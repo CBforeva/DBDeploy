@@ -1,6 +1,4 @@
-### For setting up riak_kv_env with good values.
-### Module needed: fiddyspence-sysctl
-### Module needed: erwbgy-limits
+### Manifest for setting up a dummy user.
 ### Module needed: saz-ssh
 
 user { 'testUser':
