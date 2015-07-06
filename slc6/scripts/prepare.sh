@@ -21,7 +21,7 @@ echo " "
 echo "######################################"
 echo "# WOOF -> Initialize VM:             #"
 echo "######################################"
-uppet apply /root/slc6/manifests/init_ssh.pp
+puppet apply /root/slc6/manifests/init_ssh.pp
 
 echo " "
 echo "########################################"
