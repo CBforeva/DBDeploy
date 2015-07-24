@@ -29,3 +29,36 @@ class { 'postgresql::server':
 #  user     => 'testUser',
 #  password => 'testPass',
 #}
+
+#postgresql::server::config_entry { 'shared_buffers':
+#    value => '2048MB',  
+#}   
+
+#postgresql::server::config_entry { 'work_mem':   
+#  value => '100MB',    
+#}    
+   
+#postgresql::server::config_entry { 'effective_cache_size':   
+#  value => '4096MB',   
+#}    
+   
+#postgresql::server::config_entry { 'fsync':    
+#  value => 'off',    
+#}    
+   
+#postgresql::server::config_entry { 'full_page_writes':   
+#  value => 'off',    
+#}    
+   
+#postgresql::server::config_entry { 'synchronous_commit':   
+#  value => 'off',    
+#}    
+   
+#postgresql::server::db { 'testdb':   
+#  user     => 'testUser',    
+#  password => 'testPass',    
+#}    
+->   
+##service { 'iptables':    
+#  ensure => 'stopped',   
+#}    
