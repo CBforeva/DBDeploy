@@ -32,7 +32,7 @@ class { 'postgresql::server':
 
 #postgresql::server::config_entry { 'shared_buffers':
 #    value => '2048MB',  
-#}   
+#} 
 
 #postgresql::server::config_entry { 'work_mem':   
 #  value => '100MB',    
@@ -58,7 +58,7 @@ class { 'postgresql::server':
 #  user     => 'testUser',    
 #  password => 'testPass',    
 #}    
-->   
+#->   
 ##service { 'iptables':    
 #  ensure => 'stopped',   
 #}    
