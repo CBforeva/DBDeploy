@@ -11,8 +11,7 @@
 
 $omdPackage     = "omd-1.30.x86_64"
 $rpmName        = "labs-consol-stable.rhel7.noarch.rpm"
-#$prodBackupName = "prod-backup-20160316.tar.gz"
-$prodBackupName = "omd-backup-test.tar.gz"
+$prodBackupName = "prod-backup-20160316.tar.gz"
 $chmkBackupName = "checkmk-agent-local.tar.gz"
 
 #$toFetch = [
