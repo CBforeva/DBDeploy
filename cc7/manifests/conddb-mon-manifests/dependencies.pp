@@ -1,7 +1,7 @@
 # This puppet manifest collection is installing OMD and make
 # necessarry changes to fix known issues running it on CentOS 7.
 # Required puppet modules are the following:
-#   -> jfryman-selinux
+#   -> jfryman-selinux --version 0.3.1
 #   -> maestrodev-wget --version 1.7.3
 #
 # dependencies.pp: It fetches all the necessary OMD backups for the new PROD site,

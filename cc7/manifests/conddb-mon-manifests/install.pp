@@ -1,8 +1,6 @@
 # This puppet manifest collection is installing OMD and make
 # necessarry changes to fix known issues running it on CentOS 7.
-# Required puppet modules are the following:
-#   -> jfryman-selinux
-#   -> maestrodev-wget
+# Required puppet modules are marked in dependencies.pp.
 #
 # install.pp: It installs the OMD package and the Check_MK agent.
 #             After these packages are installed, it restores the previous 
@@ -32,7 +30,7 @@ file { '/opt/omd/versions/1.30/lib/python/hashlib.py':
 exec {
   "chmk_backup_extract":
     cwd     => "/root",
-    command => "/usr/bin/tar -x -v -z -f /root/${chmkBackupName}",
+    command => "/usr/bin/tar -xvzf /root/${chmkBackupName}",
     #creates => "/tmp/local", #"/usr/share/check-mk-agent/",
     require => [ Package["check-mk-agent"], Package["${omdPackage}"] ];
 
@@ -42,25 +40,20 @@ exec {
     require => Exec["chmk_backup_extract"];
 }
 
-#####################################
-#  Restore prod from backup tarball #
-#####################################
+#########################################
+#  Restore prod from backup tarball.    #
+#########################################
 exec {
-  #cwd       => "/root";
-
-  "prod_stop":
+  "prod_check":
     cwd     => "/root",
-    command => "/usr/bin/omd stop prod",
+    command => "/usr/bin/echo Prod is up and running.",
+    onlyif  => "/usr/bin/omd status prod",
     require => Exec["chmk_backup_copy"];
 
-  "prod_backup_restore":
-    cwd     => "/root",
-    command => "/usr/bin/omd restore prod /root/${prodBackupName}",
-    require => Exec["prod_stop"];
-
-  "prod_restart":
+  "prod_restore":
     cwd     => "/root",
     command => "/usr/bin/omd start prod",
-    require => Exec["prod_backup_restore"];
+    onlyif  => "/usr/bin/omd restore prod /root/${prodBackupName}",
+    require => Exec["prod_check"];
 }
 
